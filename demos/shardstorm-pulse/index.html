@@ -57,6 +57,9 @@
 <ul><li>the AY's eight registers for this frame, from the tune rendered at the start;</li><li>the tune moved on a frame, back to the loop at its end;</li><li>the loading screen copied into place, 288 bytes a frame, while the next block loads;</li><li>after a block, the next one's memory bank and address;</li><li>the meter's three values for the next frame.</li></ul>
       <h2>The meter</h2>
       <p>Border Lab's music pulse, moved to the bottom border: bass in red, lead in yellow, drums in cyan, a band of 16 lines each. A band lights a centred stripe of <code>16 - 2 x ((16 - v) / 2)</code> lines for a channel volume <code>v</code>, so a note fills its band as it is struck and thins as it fades. The tune has two voices; the bass voice also plays the drums, so the loader marks which frames are drums when it renders the tune, and the meter sends those to the cyan band.</p>
+      <h2>Starting the clock</h2>
+      <p>The loop's clock starts with an interrupt, taken while the CPU waits in a HALT. A HALT waits in steps of 4 T-states, so where in a step the interrupt lands depends on everything that ran before - and that differs from load to load on a real machine. The text in the border is only right if the band starts within the same 4 T-states every time: one load in four would have drawn it 8 pixels out.</p>
+<p>So before the HALT, the loader reads the screen memory ten times while the picture is being drawn. The ULA holds up every read it is busy with to the same point in its own 8 T-state cycle; after two of them, the CPU is in step with it. From there to the HALT the code always takes the same time, so the interrupt lands on the same T-state on every load. The same trick keeps Border Lab's effects still.</p>
       <h2>Where everything goes</h2>
       <p>The game's first part loads over the loader's own code, so nothing loads straight into place except the last part. The screen goes to memory bank 6 and is copied to the display in the bottom border; part 1 goes to bank 4 and is copied down by a small piece of code moved out of its way after the last block; part 2 goes straight to bank 0. All of these banks are free of the ULA's contention, which would break the timing. The checksums are checked once, at the end.</p>
       <h2>How it was checked</h2>
@@ -64,7 +67,7 @@
     </div>
     <aside class="card numbers">
       <h3>The numbers</h3>
-      <dl><dt>Machine</dt><dd>Spectrum 128K, +2 (the AY is needed)</dd><dt>Tape</dt><dd>a plain .tap at ROM speed; about 4 minutes to the game</dd><dt>Loader</dt><dd>9,764 bytes at $8000, loaded by the ROM</dd><dt>Frames locked to the beam</dt><dd>8,350 in a row, every one exactly 70,908 T</dd><dt>Tape samples</dt><dd>one a line, 2.6 million in the load</dd><dt>Decoder backlog</dt><dd>57 samples at most, in a ring of 256</dd><dt>Screen copy</dt><dd>288 bytes a frame, 24 frames</dd></dl>
+      <dl><dt>Machine</dt><dd>Spectrum 128K, +2 (the AY is needed)</dd><dt>Tape</dt><dd>a plain .tap at ROM speed; about 4 minutes to the game</dd><dt>Loader</dt><dd>9,764 bytes at $8000, loaded by the ROM</dd><dt>Frames locked to the beam</dt><dd>8,350 in a row, every one exactly 70,908 T</dd><dt>The text band</dt><dd>starts at T 9,187 of every frame, on every load</dd><dt>Tape samples</dt><dd>one a line, 2.6 million in the load</dd><dt>Decoder backlog</dt><dd>57 samples at most, in a ring of 256</dd><dt>Screen copy</dt><dd>288 bytes a frame, 24 frames</dd></dl>
     </aside>
   </div>
 </section>
