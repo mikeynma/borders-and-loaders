@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Borders &amp; Loaders: border effects and tape loaders for the ZX Spectrum</title>
+<meta name="description" content="Border effects and custom tape loaders for the ZX Spectrum 48K and 128K: music, scrolling text and a VU meter while a game loads, written in Z80 and timed to the T-state.">
+<meta property="og:title" content="Borders &amp; Loaders: border effects and tape loaders for the ZX Spectrum">
+<meta property="og:description" content="Border effects and custom tape loaders for the ZX Spectrum 48K and 128K: music, scrolling text and a VU meter while a game loads, written in Z80 and timed to the T-state.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mikeynma.github.io/borders-and-loaders/">
+<meta property="og:image" content="https://mikeynma.github.io/borders-and-loaders/share.png">
+<meta property="og:image:alt" content="Borders &amp; Loaders: the logo, a Spectrum screen with loading stripes in its border, beside a loading screen">
+<link rel="canonical" href="https://mikeynma.github.io/borders-and-loaders/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mikeynma.github.io/borders-and-loaders/share.png">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="tape" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Borders and Loaders, the front page"><img src="icon.png" width="32" height="32" alt=""><span>Borders &amp; Loaders</span></a>
+    <nav aria-label="Sections"><a href="#demos">Demos</a><a href="#loading">Loading them</a><a href="#news">What's new</a><a href="#about">About</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero wrap">
+  <div class="hero-text">
+    <h1><img class="logo" src="logo.png" width="400" height="165" alt="Borders and Loaders"></h1>
+    <p class="lead">Border effects and custom tape loaders for the ZX Spectrum.</p>
+    <p>Music, scrolling text and a VU meter in the border while a game loads; rainbow bars, checkerboards and horizons that run off the edge of the TV. All of it our own Z80, timed to the T-state against the beam.</p>
+    <div class="actions">
+      <a class="btn" href="#demos">See the demos</a>
+      <a class="btn btn-ghost" href="demos/shardstorm-pulse/">The newest: Tune, text and a VU meter while it loads</a>
+    </div>
+  </div>
+  <figure class="hero-shot">
+    <a class="shot" href="shots/shardstorm-pulse/loading.png" data-caption="Part 1 of the game loading under the finished loading screen: the message in the top border, the meter in the bottom - bass full, the lead a stripe, the drums quiet."><img src="shots/shardstorm-pulse/loading.png" width="704" height="576" alt="The Shardstorm loading screen, big blocky green and magenta letters in the top border, a red and a yellow band across the bottom border, black sides"></a>
+    <figcaption>Tune, text and a VU meter while it loads. Part 1 of the game loading under the finished loading screen: the message in the top border, the meter in the bottom - bass full, the lead a stripe, the drums quiet.</figcaption>
+  </figure>
+</section>
+
+<section id="demos" class="wrap">
+  <p class="eyebrow">The demos</p>
+  <h2>Load one</h2>
+  <p class="sub">Each is a tape to load in an emulator or on a real Spectrum, with a page on how it works. Newest first.</p>
+  <div class="demos">
+    <article class="demo card">
+      <div class="demo-media"><a class="shot" href="shots/shardstorm-pulse/loading.png" data-caption="Part 1 of the game loading under the finished loading screen: the message in the top border, the meter in the bottom - bass full, the lead a stripe, the drums quiet."><img src="shots/shardstorm-pulse/loading.png" width="704" height="576" loading="lazy" alt="The Shardstorm loading screen, big blocky green and magenta letters in the top border, a red and a yellow band across the bottom border, black sides"></a></div>
+      <div class="demo-text">
+        <p class="badges"><span class="badge m128K">128K</span><span class="date">12 November 2026</span></p>
+        <h3><a href="demos/shardstorm-pulse/">Tune, text and a VU meter while it loads</a></h3>
+        <p>Shardstorm's whole 128K tape loads with its tune playing, a message scrolling in the top border and a three-band VU meter keeping time in the bottom border. The side borders stay black.</p>
+        <p class="links"><a class="btn btn-small" href="demos/shardstorm-pulse/">How it works</a><a class="btn btn-small btn-ghost" href="files/shardstorm-128k-pulse.tzx" download>tzx</a><a class="btn btn-small btn-ghost" href="files/shardstorm-128k-pulse.tap" download>tap</a></p>
+      </div>
+    </article>
+    <article class="demo card">
+      <div class="demo-media"><a class="shot" href="shots/shardstorm-scroll/scroll.png" data-caption="The message in the top border while the loading screen loads: the &quot;HARD&quot; of SHARDSTORM, a second in."><img src="shots/shardstorm-scroll/scroll.png" width="704" height="576" loading="lazy" alt="The letters HARD, big and blocky in cyan and white, in the top border above a black screen"></a></div>
+      <div class="demo-text">
+        <p class="badges"><span class="badge m128K">128K</span><span class="date">11 November 2026</span></p>
+        <h3><a href="demos/shardstorm-scroll/">Text in the border while the screen loads</a></h3>
+        <p>A message scrolls through the top border while Shardstorm's loading screen loads, then the tune plays while the game loads.</p>
+        <p class="links"><a class="btn btn-small" href="demos/shardstorm-scroll/">How it works</a><a class="btn btn-small btn-ghost" href="files/shardstorm-128k-scroll.tzx" download>tzx</a><a class="btn btn-small btn-ghost" href="files/shardstorm-128k-scroll.tap" download>tap</a></p>
+      </div>
+    </article>
+    <article class="demo card">
+      <div class="demo-media"><a class="shot" href="shots/shardstorm-music/loading.png" data-caption="Loading, with the tune playing."><img src="shots/shardstorm-music/loading.png" width="704" height="576" loading="lazy" alt="The Shardstorm loading screen with blue and yellow loading stripes in the border"></a></div>
+      <div class="demo-text">
+        <p class="badges"><span class="badge m128K">128K</span><span class="date">11 November 2026</span></p>
+        <h3><a href="demos/shardstorm-music/">The tune while it loads</a></h3>
+        <p>Shardstorm's AY tune plays the whole time its 128K tape loads, at the ROM's normal speed, from a plain .tap.</p>
+        <p class="links"><a class="btn btn-small" href="demos/shardstorm-music/">How it works</a><a class="btn btn-small btn-ghost" href="files/shardstorm-128k-music.tzx" download>tzx</a><a class="btn btn-small btn-ghost" href="files/shardstorm-128k-music.tap" download>tap</a></p>
+      </div>
+    </article>
+    <article class="demo card">
+      <div class="demo-media"><a class="shot" href="shots/border-lab/horizon.png" data-caption="7, Cloudy horizon: sky and sea carried out to the edge of the TV, clouds of 8-pixel cells drawn alike on the screen and in the border."><img src="shots/border-lab/horizon.png" width="704" height="576" loading="lazy" alt="A cyan sky with white blocky clouds and a yellow sun, a blue sea with a white boat, filling the screen and the border"></a></div>
+      <div class="demo-text">
+        <p class="badges"><span class="badge m48K">48K</span><span class="badge m128K">128K</span><span class="date">10 November 2026</span></p>
+        <h3><a href="demos/border-lab/">Border Lab: nine border effects</a></h3>
+        <p>Rainbow bars, a text scroller, a checkerboard, loading stripes on purpose, a cloudy horizon carried out to the edge of the TV, a VU meter and a timing ruler: one tape, for the 48K and the 128K.</p>
+        <p class="links"><a class="btn btn-small" href="demos/border-lab/">How it works</a><a class="btn btn-small btn-ghost" href="files/border-lab.tap" download>tap</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="loading" class="wrap">
+  <div class="card download">
+    <div>
+      <p class="eyebrow">Loading them</p>
+      <h2>Play the tape</h2>
+      <p>The point of a custom loader is what happens while the tape plays, so let it play: at normal speed, the whole way through.</p>
+      <p class="meta">Tapes last built: 12 November 2026.</p>
+    </div>
+    <ol class="steps">
+      <li><b>In an emulator</b> (ZX Spin, Retro Virtual Machine, Fuse and others): choose the machine the demo says - a 128K or +2 for the 128K ones - and open the <code>.tzx</code> or the <code>.tap</code>. They hold the same blocks; use whichever your emulator prefers. On a 128K, pick <b>Tape Loader</b>; on a 48K, type <code>LOAD ""</code>.</li>
+      <li><b>Switch off instant and fast loading.</b> The custom loaders read the tape signal themselves, edge by edge: an emulator that skips the tape skips the loader, and everything it does while it loads.</li>
+      <li><b>On a real Spectrum:</b> play the <code>.tzx</code> into the EAR socket from a TZX player. These are for the original machines' timing: the 48K, the 128K and the grey +2.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="news" class="wrap">
+  <p class="eyebrow">Changelog</p>
+  <h2>What's new</h2>
+  <div class="log card">
+    <ul>
+      <li><time datetime="2026-11-12">12 November 2026</time> <b>Tune, text and a VU meter while it loads:</b> Shardstorm's whole 128K tape, every frame locked to the beam. <a href="demos/shardstorm-pulse/">How it works</a>.</li>
+      <li><time datetime="2026-11-12">12 November 2026</time> This site: every demo with its tape, screenshots and a page on how it works.</li>
+      <li><time datetime="2026-11-11">11 November 2026</time> <b>Text in the border while the screen loads</b>, and <b>the tune while it loads</b>, on Shardstorm's 128K tape.</li>
+      <li><time datetime="2026-11-10">10 November 2026</time> <b>Border Lab</b>: nine border effects on one tape for the 48K and 128K.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="about" class="wrap">
+  <p class="eyebrow">About</p>
+  <h2>How it's made</h2>
+  <div class="grid cards">
+    <article class="card"><h3>Our own tools</h3><p>An assembler and a Spectrum emulator written for this work, in JavaScript. The emulator models the ULA's timing, contention and border latch, and has a tape deck that plays the real pulses.</p></article>
+    <article class="card"><h3>Checked, frame by frame</h3><p>Every demo's build loads its tape through that deck and checks what it draws: where each border write lands, the length of every frame, every bit the loader reads.</p></article>
+    <article class="card"><h3>Then looked at</h3><p>Screenshots catch what checks can't, and real emulators sometimes disagree with ours by a few T-states. The demos are tried in other emulators before they go in a game.</p></article>
+  </div>
+</section>
+</main>
+
+<footer class="wrap foot">
+  <img src="icon.png" width="24" height="24" alt="">
+  <div>
+    <p>Borders &amp; Loaders is a set of experiments for the ZX Spectrum, written in Z80 assembly with our own assembler and emulator, and checked frame by frame before anything goes into a game. Made in the UK, by the maker of <a href="https://mikeynma.github.io/">games for the ZX Spectrum Next</a>.</p>
+    <p class="small">Shardstorm, the game on the loader demos' tapes, is our own rock shooter in progress. Everything here is our own code, fonts, tunes and pictures. Text in Geist, under the SIL Open Font License.</p>
+  </div>
+</footer>
+<dialog class="lightbox" aria-label="Screenshot">
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-btn lb-prev" type="button" aria-label="Previous picture">&lsaquo;</button>
+  <button class="lb-btn lb-next" type="button" aria-label="Next picture">&rsaquo;</button>
+  <button class="lb-btn lb-close" type="button" autofocus aria-label="Close">&times;</button>
+</dialog>
+<script src="site.js"></script>
+</body>
+</html>
