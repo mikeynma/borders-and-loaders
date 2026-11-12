@@ -37,12 +37,12 @@
     <p>Music, scrolling text and a VU meter in the border while a game loads; rainbow bars, checkerboards and horizons that run off the edge of the TV. All of it our own Z80, timed to the T-state against the beam.</p>
     <div class="actions">
       <a class="btn" href="#demos">See the demos</a>
-      <a class="btn btn-ghost" href="demos/shardstorm-minigame/">The newest: Play Shardstorm while it loads</a>
+      <a class="btn btn-ghost" href="demos/shardstorm-beeper/">The newest: A beeper tune while the 48K loads</a>
     </div>
   </div>
   <figure class="hero-shot">
-    <a class="shot" href="shots/shardstorm-minigame/playing.png" data-caption="Ten seconds into the game's load: the ship among the shards in the loading screen's box, the score below, the ROM's loading stripes all round."><img src="shots/shardstorm-minigame/playing.png" width="640" height="512" alt="The Shardstorm loading screen with blue and yellow loading stripes in the border; in its central box a small ship, several outline shards, and SC 0015 HI 0015"></a>
-    <figcaption>Play Shardstorm while it loads. Ten seconds into the game's load: the ship among the shards in the loading screen's box, the score below, the ROM's loading stripes all round.</figcaption>
+    <a class="shot" href="shots/shardstorm-beeper/loading.png" data-caption="The game loading under the finished loading screen: the message in the top border, the meter in the bottom, moving to the beeper's own voices."><img src="shots/shardstorm-beeper/loading.png" width="704" height="576" alt="The Shardstorm loading screen, blocky green and magenta letters in the top border, a red and a yellow band across the bottom border"></a>
+    <figcaption>A beeper tune while the 48K loads. The game loading under the finished loading screen: the message in the top border, the meter in the bottom, moving to the beeper's own voices.</figcaption>
   </figure>
 </section>
 
@@ -51,6 +51,15 @@
   <h2>Load one</h2>
   <p class="sub">Each is a tape to load in an emulator or on a real Spectrum, with a page on how it works. Newest first.</p>
   <div class="demos">
+    <article class="demo card">
+      <div class="demo-media"><a class="shot" href="shots/shardstorm-beeper/loading.png" data-caption="The game loading under the finished loading screen: the message in the top border, the meter in the bottom, moving to the beeper's own voices."><img src="shots/shardstorm-beeper/loading.png" width="704" height="576" loading="lazy" alt="The Shardstorm loading screen, blocky green and magenta letters in the top border, a red and a yellow band across the bottom border"></a></div>
+      <div class="demo-text">
+        <p class="badges"><span class="badge m48K">48K</span><span class="date">12 November 2026</span></p>
+        <h3><a href="demos/shardstorm-beeper/">A beeper tune while the 48K loads</a></h3>
+        <p>Shardstorm's 48K tape loads with its tune playing on the beeper - three voices from one bit - while text scrolls in the top border and the VU meter pulses to the music in the bottom. The beeper and the tape share a single pin, so every bit is read between the notes.</p>
+        <p class="links"><a class="btn btn-small" href="demos/shardstorm-beeper/">How it works</a><a class="btn btn-small btn-ghost" href="files/shardstorm-48k-beep.tzx" download>48K .tzx</a><a class="btn btn-small btn-ghost" href="files/shardstorm-48k-beep.tap" download>48K .tap</a></p>
+      </div>
+    </article>
     <article class="demo card">
       <div class="demo-media"><a class="shot" href="shots/shardstorm-minigame/playing.png" data-caption="Ten seconds into the game's load: the ship among the shards in the loading screen's box, the score below, the ROM's loading stripes all round."><img src="shots/shardstorm-minigame/playing.png" width="640" height="512" loading="lazy" alt="The Shardstorm loading screen with blue and yellow loading stripes in the border; in its central box a small ship, several outline shards, and SC 0015 HI 0015"></a></div>
       <div class="demo-text">
@@ -120,6 +129,7 @@
   <h2>What's new</h2>
   <div class="log card">
     <ul>
+      <li><time datetime="2026-11-12">12 November 2026</time> <b>A beeper tune while the 48K loads:</b> <a href="demos/shardstorm-beeper/">Shardstorm's 48K tape plays its tune on the beeper</a>, three voices from one bit, with the text and the meter going too.</li>
       <li><time datetime="2026-11-12">12 November 2026</time> <b>Play Shardstorm while it loads:</b> <a href="demos/shardstorm-minigame/">a cut-down Shardstorm in the loading screen's box</a>, on 48K and 128K tapes, and your best score becomes the game's high score.</li>
       <li><time datetime="2026-11-12">12 November 2026</time> <b>Now on the 48K:</b> <a href="demos/shardstorm-pulse/">tune, text and a VU meter while it loads</a> has a 48K tape - the text all the way, the meter keeping a silent beat, the game in 2 minutes 14 seconds.</li>
       <li><time datetime="2026-11-12">12 November 2026</time> <b>Shorter tapes all round:</b> <a href="demos/shardstorm-music/">the tune while it loads</a> now reaches the game in 2 minutes 7 seconds (was 3:16), and <a href="demos/shardstorm-scroll/">text in the border</a> in 2:22 on the 128K (was 3:52): their loaders and the game load packed, and unpack when the last block is in.</li>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A beeper tune while the 48K loads - Borders &amp; Loaders</title>
+<meta name="description" content="Shardstorm's 48K tape loads with its tune playing on the beeper - three voices from one bit - while text scrolls in the top border and the VU meter pulses to the music in the bottom. The beeper and the tape share a single pin, so every bit is read between the notes.">
+<meta property="og:title" content="A beeper tune while the 48K loads - Borders &amp; Loaders">
+<meta property="og:description" content="Shardstorm's 48K tape loads with its tune playing on the beeper - three voices from one bit - while text scrolls in the top border and the VU meter pulses to the music in the bottom. The beeper and the tape share a single pin, so every bit is read between the notes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mikeynma.github.io/borders-and-loaders/demos/shardstorm-beeper/">
+<meta property="og:image" content="https://mikeynma.github.io/borders-and-loaders/shots/shardstorm-beeper/loading.png">
+<meta property="og:image:alt" content="The Shardstorm loading screen, blocky green and magenta letters in the top border, a red and a yellow band across the bottom border">
+<link rel="canonical" href="https://mikeynma.github.io/borders-and-loaders/demos/shardstorm-beeper/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mikeynma.github.io/borders-and-loaders/shots/shardstorm-beeper/loading.png">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="../../favicon-32.png" type="image/png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="preload" href="../../fonts/geist-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+<div class="tape" aria-hidden="true"></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../../" aria-label="Borders and Loaders, the front page"><img src="../../icon.png" width="32" height="32" alt=""><span>Borders &amp; Loaders</span></a>
+    <nav aria-label="Sections"><a href="#how">How it works</a><a href="#screens">Screens</a><a href="#download">Download</a><a href="../../#demos">All demos</a></nav>
+  </div>
+</header>
+
+<main>
+<section class="hero wrap">
+  <div class="hero-text">
+    <p class="badges"><span class="badge m48K">48K</span><span class="date">12 November 2026</span></p>
+    <h1 class="title">A beeper tune while the 48K loads</h1>
+    <p class="lead">Shardstorm's 48K tape loads with its tune playing on the beeper - three voices from one bit - while text scrolls in the top border and the VU meter pulses to the music in the bottom. The beeper and the tape share a single pin, so every bit is read between the notes.</p>
+    <p>The 48K has no sound chip: every sound it makes is the CPU flicking one bit of one port on and off, at exactly the right moments. So does every load: the CPU watches one bit of the same port for the tape's edges, at exactly the right moments. This tape does both at once, and keeps the text and the meter of <a href="../shardstorm-pulse/">the beam-locked tape</a> going as well.</p>
+<p>Listen to the tune on its own, and as a real 48K plays it, over the tape's own screech:</p>
+<p><audio controls preload="none" src="../../audio/shardstorm-beep-tune.mp3"></audio> <small>the beeper alone, 30 s</small></p>
+<p><audio controls preload="none" src="../../audio/shardstorm-beep-listen.mp3"></audio> <small>with the tape under it, 30 s</small></p>
+    <div class="actions"><a class="btn" href="../../files/shardstorm-48k-beep.tzx" download>Download the 48K .tzx <small>24 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-beep.tap" download>Download the 48K .tap <small>24 KB</small></a></div>
+  </div>
+  <figure class="hero-shot">
+    <a class="shot" href="../../shots/shardstorm-beeper/loading.png" data-caption="The game loading under the finished loading screen: the message in the top border, the meter in the bottom, moving to the beeper's own voices."><img src="../../shots/shardstorm-beeper/loading.png" width="704" height="576" alt="The Shardstorm loading screen, blocky green and magenta letters in the top border, a red and a yellow band across the bottom border"></a>
+    <figcaption>The game loading under the finished loading screen: the message in the top border, the meter in the bottom, moving to the beeper's own voices.</figcaption>
+  </figure>
+</section>
+
+<section id="how" class="wrap">
+  <p class="eyebrow">How it works</p>
+  <div class="tech">
+    <div class="tech-text">
+      <h2>One pin, two jobs</h2>
+      <p>On a 48K the speaker and the tape input meet at one pin of the ULA. While the loader holds the speaker high, the pin is high too, and the tape reads 1 whatever it is doing - and for a little while after, as the pin's voltage dies away. A loader that plays music has to read the tape only while the speaker is low, and long enough after it fell.</p>
+<p>Our emulator didn't know this, so the first job was to teach it: the pin's voltages for each speaker and MIC setting, and how fast it falls, from measurements published for the Issue 3 board (Issue 2 too). With that in, a tape that reads while the speaker is up fails to load here, as it would on a real 48K - and every one of our older tapes was checked to load exactly as before.</p>
+      <h2>Three voices from one bit</h2>
+      <p>The loader works in pairs of scan lines. At the start of each pair it takes one sample of the tape; straight after, it plays one slot of the tune - a single short pulse on the speaker, 12, 20 or 32 T-states long, or none. That is 7,812 slots a second. The width of a pulse is its loudness; how often they come is the pitch. The lead plays one pulse a cycle, an octave down from the 128K's tune; the bass a burst of four; the snare random pulses. By the time the next sample is taken, the speaker has been low for over 400 T-states, more than twice what the pin needs.</p>
+<p>The tune is Shardstorm's own, arranged for the beeper by a generator that works out every slot. Working out the next slots takes about 8% of the CPU, in straight code fitted between the tape samples.</p>
+      <h2>Everything else, still in step</h2>
+      <p>Every way through the loader still takes exactly one pair of lines, so the text in the top border and the meter in the bottom land where they should on every frame. The meter is driven by the beeper's voices themselves: the bass's pulse width in red, the lead's in yellow, the snare in cyan. Like the other 48K tape, its clock follows the beam, so it draws right on ZX Spin's and Retro Virtual Machine's 48Ks as well as ours.</p>
+<p>One thing gave: while the text is drawn, 20 lines a frame have no room for pulses, so the music pauses for 1.3 ms every frame - a slight flutter, if you listen for it.</p>
+      <h2>How it was checked</h2>
+      <p>Checked by <code>shardbeep48.js</code>, loading the tape through our emulator's tape deck with the shared pin modelled, on Issue 3 and Issue 2 boards and on a quiet tape: every bit read right, every tape sample taken with the speaker low, every one of 234,000 tune slots as the generator worked it out, the text in the top border latch by latch, the meter against the voices, the game's parts byte for byte, then Shardstorm's menu - on our 48K and on one whose picture is 3 T-states later, like Spin's and RVM's. Fifteen deliberate faults each make the right check fail; one is reading the tape inside a pulse, which loads fine without the pin model and fails with it. Not yet heard on a real 48K, and most emulators don't model the shared pin, so there it will load either way.</p>
+    </div>
+    <aside class="card numbers">
+      <h3>The numbers</h3>
+      <dl><dt>Machines</dt><dd>48K</dd><dt>Tape</dt><dd>a plain .tap at ROM speed, packed: 2 min 21 s to the game</dd><dt>Tune</dt><dd>three voices (lead, bass, snare), 7,812 slots a second, one pulse of 12, 20 or 32 T a slot</dd><dt>CPU for the tune</dt><dd>about 8%</dd><dt>Tape samples</dt><dd>one a pair of lines, every one taken with the speaker low, at least 400 T after it fell</dd><dt>Bits</dt><dd>a 0 reads as 1-2 samples, a 1 as 5-6, the line between them at 4</dd></dl>
+    </aside>
+  </div>
+</section>
+
+<section id="screens" class="wrap">
+  <p class="eyebrow">Screens</p>
+  <h2>As our emulator draws it</h2>
+  <p class="sub">Full frames, border and all. Click a picture to see it bigger.</p>
+  <div class="gallery">
+    <a class="shot" href="../../shots/shardstorm-beeper/loading.png" data-caption="The game loading under the finished loading screen: the message in the top border, the meter in the bottom, moving to the beeper's own voices."><img src="../../shots/shardstorm-beeper/loading.png" width="704" height="576" loading="lazy" alt="The Shardstorm loading screen, blocky green and magenta letters in the top border, a red and a yellow band across the bottom border"></a>
+    <a class="shot" href="../../shots/shardstorm-beeper/snare.png" data-caption="A snare on the beeper: the meter flashes magenta."><img src="../../shots/shardstorm-beeper/snare.png" width="704" height="576" loading="lazy" alt="The Shardstorm loading screen with magenta, yellow and cyan bands across the bottom border"></a>
+    <a class="shot" href="../../shots/shardstorm-beeper/copying.png" data-caption="The loading screen being copied into place, the picture in before its colours, while the tune plays on."><img src="../../shots/shardstorm-beeper/copying.png" width="704" height="576" loading="lazy" alt="The Shardstorm loading screen half drawn in white on black, blocky text in the top border, red and yellow bands below"></a>
+    <a class="shot wide" href="../../shots/shardstorm-beeper/meter-timeline.png" data-caption="The meter over a few seconds, one column a frame: the bass in red struck on every note, the lead in yellow, the snare in cyan."><img src="../../shots/shardstorm-beeper/meter-timeline.png" width="1200" height="144" loading="lazy" alt="A strip of red, yellow and cyan shapes: the meter's three bands over many frames"></a>
+    <a class="shot" href="../../shots/shardstorm-beeper/menu.png" data-caption="Loaded: Shardstorm's menu."><img src="../../shots/shardstorm-beeper/menu.png" width="704" height="576" loading="lazy" alt="The Shardstorm menu"></a>
+  </div>
+</section>
+
+<section id="download" class="wrap">
+  <div class="card download">
+    <div>
+      <p class="eyebrow">Download</p>
+      <h2>Load it yourself</h2>
+      <p>For the 48K. Each machine has its own tape; its .tzx and .tap hold the same blocks.</p>
+      <p class="meta"><code>shardstorm-48k-beep.tzx</code>, 24 KB, built 12 November 2026<br><code>shardstorm-48k-beep.tap</code>, 24 KB, built 12 November 2026</p>
+      <div class="actions"><a class="btn" href="../../files/shardstorm-48k-beep.tzx" download>Download the 48K .tzx <small>24 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-beep.tap" download>Download the 48K .tap <small>24 KB</small></a></div>
+    </div>
+    <ol class="steps">
+      <li><b>In an emulator</b> (ZX Spin, Retro Virtual Machine, Fuse and others): choose the machine the demo says - a 128K or +2 for the 128K ones - and open the <code>.tzx</code> or the <code>.tap</code>. They hold the same blocks; use whichever your emulator prefers. On a 128K, pick <b>Tape Loader</b>; on a 48K, type <code>LOAD ""</code>.</li>
+      <li><b>Switch off instant and fast loading.</b> The custom loaders read the tape signal themselves, edge by edge: an emulator that skips the tape skips the loader, and everything it does while it loads.</li>
+      <li><b>On a real Spectrum:</b> play the <code>.tzx</code> into the EAR socket from a TZX player. These are for the original machines' timing: the 48K, the 128K and the grey +2.</li>
+    </ol>
+  </div>
+</section>
+
+<nav class="wrap pager" aria-label="Other demos">
+  <a href="../shardstorm-minigame/">&larr; Play Shardstorm while it loads</a>
+  <span></span>
+</nav>
+</main>
+
+<footer class="wrap foot">
+  <img src="../../icon.png" width="24" height="24" alt="">
+  <div>
+    <p>Borders &amp; Loaders is a set of experiments for the ZX Spectrum, written in Z80 assembly with our own assembler and emulator, and checked frame by frame before anything goes into a game. Made in the UK, by the maker of <a href="https://mikeynma.github.io/">games for the ZX Spectrum Next</a>.</p>
+    <p class="small">Shardstorm, the game on the loader demos' tapes, is our own rock shooter in progress. Everything here is our own code, fonts, tunes and pictures. Text in Geist, under the SIL Open Font License.</p>
+  </div>
+</footer>
+<dialog class="lightbox" aria-label="Screenshot">
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="lb-btn lb-prev" type="button" aria-label="Previous picture">&lsaquo;</button>
+  <button class="lb-btn lb-next" type="button" aria-label="Next picture">&rsaquo;</button>
+  <button class="lb-btn lb-close" type="button" autofocus aria-label="Close">&times;</button>
+</dialog>
+<script src="../../site.js"></script>
+</body>
+</html>
