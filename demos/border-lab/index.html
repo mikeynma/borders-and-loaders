@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Border Lab: nine border effects - Borders &amp; Loaders</title>
-<meta name="description" content="Rainbow bars, a text scroller, a checkerboard, loading stripes on purpose, a cloudy horizon carried out to the edge of the TV, a VU meter and a timing ruler: one tape, for the 48K and the 128K.">
-<meta property="og:title" content="Border Lab: nine border effects - Borders &amp; Loaders">
-<meta property="og:description" content="Rainbow bars, a text scroller, a checkerboard, loading stripes on purpose, a cloudy horizon carried out to the edge of the TV, a VU meter and a timing ruler: one tape, for the 48K and the 128K.">
+<title>Border Lab: eleven border effects - Borders &amp; Loaders</title>
+<meta name="description" content="Rainbow bars, a text scroller, a checkerboard, loading stripes on purpose, a cloudy horizon carried out to the edge of the TV, a VU meter, a timing ruler - and Pong played in the border, and giant letters running round all four sides: one tape, for the 48K and the 128K.">
+<meta property="og:title" content="Border Lab: eleven border effects - Borders &amp; Loaders">
+<meta property="og:description" content="Rainbow bars, a text scroller, a checkerboard, loading stripes on purpose, a cloudy horizon carried out to the edge of the TV, a VU meter, a timing ruler - and Pong played in the border, and giant letters running round all four sides: one tape, for the 48K and the 128K.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mikeynma.github.io/borders-and-loaders/demos/border-lab/">
 <meta property="og:image" content="https://mikeynma.github.io/borders-and-loaders/shots/border-lab/horizon.png">
@@ -33,14 +33,14 @@
 <section class="hero wrap">
   <div class="hero-text">
     <p class="badges"><span class="badge m48K">48K</span><span class="badge m128K">128K</span><span class="date">10 November 2026</span></p>
-    <h1 class="title">Border Lab: nine border effects</h1>
-    <p class="lead">Rainbow bars, a text scroller, a checkerboard, loading stripes on purpose, a cloudy horizon carried out to the edge of the TV, a VU meter and a timing ruler: one tape, for the 48K and the 128K.</p>
-    <p>The test bench where the border effects were learned, before any of them went into a game. Pick an effect from the menu with keys 1 to 9. Each one says on screen what it does and how much of the Spectrum's time it costs.</p>
-    <div class="actions"><a class="btn" href="../../files/border-lab.tap" download>Download the .tap <small>28 KB</small></a></div>
+    <h1 class="title">Border Lab: eleven border effects</h1>
+    <p class="lead">Rainbow bars, a text scroller, a checkerboard, loading stripes on purpose, a cloudy horizon carried out to the edge of the TV, a VU meter, a timing ruler - and Pong played in the border, and giant letters running round all four sides: one tape, for the 48K and the 128K.</p>
+    <p>The test bench where the border effects were learned, before any of them went into a game. Pick an effect from the menu with keys 1 to 9; SPACE turns to a second page, with Pong played in the border and a marquee round the frame. Each one says on screen what it does and how much of the Spectrum's time it costs.</p>
+    <div class="actions"><a class="btn" href="../../files/border-lab.tap" download>Download the .tap <small>39 KB</small></a></div>
   </div>
   <figure class="hero-shot">
-    <a class="shot" href="../../shots/border-lab/horizon.png" data-caption="7, Cloudy horizon: sky and sea carried out to the edge of the TV, clouds of 8-pixel cells drawn alike on the screen and in the border."><img src="../../shots/border-lab/horizon.png" width="704" height="576" alt="A cyan sky with white blocky clouds and a yellow sun, a blue sea with a white boat, filling the screen and the border"></a>
-    <figcaption>7, Cloudy horizon: sky and sea carried out to the edge of the TV, clouds of 8-pixel cells drawn alike on the screen and in the border.</figcaption>
+    <video src="../../videos/border-lab.mp4" poster="../../shots/border-lab/horizon.png" width="786" height="576" muted loop playsinline controls preload="metadata" aria-label="Border Lab: eleven border effects: Recorded in Retro Virtual Machine, 128K"></video>
+    <figcaption>Recorded in Retro Virtual Machine, 128K.</figcaption>
   </figure>
 </section>
 
@@ -54,12 +54,14 @@
       <p>The tape holds two copies of the lab, one timed for each machine. A small boot program counts how far it gets round a loop in one frame, which tells the 48K from the 128K; a probe of the floating bus tells a 128K or grey +2 from a +2A, +2B or +3 (which have none). Just before each frame starts, a loop of reads from screen memory lines the CPU up with the ULA, so every effect starts on the same T-state every frame.</p>
       <h2>What displays show</h2>
       <p>Real displays crop the border: about 24 lines at the top and 32 pixels a side are all every one of them shows. So anything that has to be seen sits close to the paper, and the rest is decoration. Two effects learned this the hard way when their best parts vanished in an emulator.</p>
+      <h2>Pong and a marquee</h2>
+      <p>The second page has the two hardest. In Pong the ball's place in the top and bottom borders, and the bats' at the sides, mean colour changes placed across a line to the 8-pixel latch, wherever the game has put them - so every frame has one shape whatever the ball is doing: fixed-length routines chained together, and game logic with no branches, the same length every frame. One write in each paper line keeps the CPU locked to the ULA. The marquee turns its letters at the corners: the top and bottom strips run the full width, the sides carry three cells across, which is all a side border line can change in.</p>
       <h2>How it was checked</h2>
-      <p>Checked by Border Lab's own build for every effect on both machines: where every border write lands, line by line, at all four points the interrupt can come; the tape loaded on both; every frame finished in time.</p>
+      <p>Checked by Border Lab's own build for every effect on both machines: where every border write lands, line by line, at all four points the interrupt can come; the tape loaded on both; every frame finished in time. Pong and the marquee are also decoded latch by latch, every frame, against models of the game and the text, and Pong's rules against a copy of them in JavaScript; a rally between scripted players, scoring both ways and the joystick are played through. Pong and the marquee are not yet seen in an emulator.</p>
     </div>
     <aside class="card numbers">
       <h3>The numbers</h3>
-      <dl><dt>Machines</dt><dd>48K, 128K, +2; +2A/+3 detected</dd><dt>Tape</dt><dd>a plain .tap</dd><dt>Effects</dt><dd>nine on keys 1-9</dd><dt>Timing</dt><dd>every effect entered at T 108 of its frame</dd></dl>
+      <dl><dt>Machines</dt><dd>48K, 128K, +2; +2A/+3 detected</dd><dt>Tape</dt><dd>a plain .tap</dd><dt>Effects</dt><dd>nine on keys 1-9, two more on a second page (SPACE)</dd><dt>Timing</dt><dd>every effect entered at T 108 of its frame</dd></dl>
     </aside>
   </div>
 </section>
@@ -70,6 +72,8 @@
   <p class="sub">Full frames, border and all. Click a picture to see it bigger.</p>
   <div class="gallery">
     <a class="shot" href="../../shots/border-lab/horizon.png" data-caption="7, Cloudy horizon: sky and sea carried out to the edge of the TV, clouds of 8-pixel cells drawn alike on the screen and in the border."><img src="../../shots/border-lab/horizon.png" width="704" height="576" loading="lazy" alt="A cyan sky with white blocky clouds and a yellow sun, a blue sea with a white boat, filling the screen and the border"></a>
+    <a class="shot" href="../../shots/border-lab/pong.png" data-caption="SPACE, then 1, Border Pong: the bats in the side borders, the ball crossing the paper's edges into all four borders. Q/A or a joystick, P/L; the computer plays any side nobody touches."><img src="../../shots/border-lab/pong.png" width="704" height="576" loading="lazy" alt="A blue screen with a score at the top, a cyan bat in the left border, a yellow bat in the right border and a white square ball"></a>
+    <a class="shot" href="../../shots/border-lab/marquee.png" data-caption="SPACE, then 2, Marquee: ROUND AND ROUND in giant letters, running clockwise round all four borders like a cinema sign."><img src="../../shots/border-lab/marquee.png" width="704" height="576" loading="lazy" alt="The Border Lab menu, page 2, ringed by giant blocky coloured letters in all four borders"></a>
     <a class="shot" href="../../shots/border-lab/menu.png" data-caption="The menu, with rainbow bars: each line of the border its own colour."><img src="../../shots/border-lab/menu.png" width="704" height="576" loading="lazy" alt="The Border Lab menu with rainbow stripes above and below"></a>
     <a class="shot" href="../../shots/border-lab/bars.png" data-caption="2, Bars + game work: balls move between the bars, a different amount of work each frame; the floating bus tells the code where the beam is."><img src="../../shots/border-lab/bars.png" width="704" height="576" loading="lazy" alt="Vertical colour bars with black balls on the screen, rainbow stripes in the border above and below"></a>
     <a class="shot" href="../../shots/border-lab/scroller.png" data-caption="3, Text scroller: a 3x5 font of our own in the top border, inside the 24 lines every display shows."><img src="../../shots/border-lab/scroller.png" width="704" height="576" loading="lazy" alt="Blocky text in the top border"></a>
@@ -87,8 +91,8 @@
       <p class="eyebrow">Download</p>
       <h2>Load it yourself</h2>
       <p>For the 48K and the 128K. </p>
-      <p class="meta"><code>border-lab.tap</code>, 28 KB, built 12 November 2026</p>
-      <div class="actions"><a class="btn" href="../../files/border-lab.tap" download>Download the .tap <small>28 KB</small></a></div>
+      <p class="meta"><code>border-lab.tap</code>, 39 KB, built 13 November 2026</p>
+      <div class="actions"><a class="btn" href="../../files/border-lab.tap" download>Download the .tap <small>39 KB</small></a></div>
     </div>
     <ol class="steps">
       <li><b>In an emulator</b> (ZX Spin, Retro Virtual Machine, Fuse and others): choose the machine the demo says - a 128K or +2 for the 128K ones - and open the <code>.tzx</code> or the <code>.tap</code>. They hold the same blocks; use whichever your emulator prefers. On a 128K, pick <b>Tape Loader</b>; on a 48K, type <code>LOAD ""</code>.</li>
