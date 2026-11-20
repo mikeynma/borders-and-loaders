@@ -40,12 +40,12 @@
     <p>Music, scrolling text and a VU meter in the border while a game loads; rainbow bars, checkerboards and horizons that run off the edge of the TV. All of it our own Z80, timed to the T-state against the beam.</p>
     <div class="actions">
       <a class="btn" href="#demos">See the demos</a>
-      <a class="btn btn-ghost" href="demos/shardstorm-reveal/">The newest: A loading screen that develops like a photo</a>
+      <a class="btn btn-ghost" href="demos/shardstorm-release/">The newest: Shardstorm: the finished tapes</a>
     </div>
   </div>
   <figure class="hero-shot">
-    <video src="videos/shardstorm-reveal.mp4" poster="shots/shardstorm-reveal/developing.png" width="782" height="576" muted loop playsinline controls preload="metadata" aria-label="A loading screen that develops like a photo: Recorded in Retro Virtual Machine, 128K"></video>
-    <figcaption>Recorded in Retro Virtual Machine, 128K.</figcaption>
+    <a class="shot" href="shots/shardstorm-release/loading.png" data-caption="Loading on a 128K: the mini-game in the loading screen's box, the tune playing, the ROM's stripes all round."><img src="shots/shardstorm-release/loading.png" width="640" height="512" alt="The Shardstorm loading screen with blue and yellow loading stripes; in its central box a small ship and shards, SC 0055 HI 0055 and SHARDSTORM"></a>
+    <figcaption>Shardstorm: the finished tapes. Loading on a 128K: the mini-game in the loading screen's box, the tune playing, the ROM's stripes all round.</figcaption>
   </figure>
 </section>
 
@@ -55,7 +55,16 @@
   <p class="sub">Each is a tape to load in an emulator or on a real Spectrum, with a page on how it works. Newest first.</p>
   <div class="demos">
     <article class="demo card">
-      <div class="demo-media"><a class="shot" href="shots/shardstorm-reveal/developing.png" data-caption="A fifth of the way through the screen's block: every colour already in, through a sparse dither, the whole layout readable."><img src="shots/shardstorm-reveal/developing.png" width="640" height="512" loading="lazy" alt="The Shardstorm loading screen drawn in faint dotted colours: the title in cyan, grey shapes, a cyan frame round the box, a red strip at the bottom; blue and yellow loading stripes in the border"></a></div>
+      <div class="demo-media"><a class="shot" href="shots/shardstorm-release/loading.png" data-caption="Loading on a 128K: the mini-game in the loading screen's box, the tune playing, the ROM's stripes all round."><img src="shots/shardstorm-release/loading.png" width="640" height="512" loading="lazy" alt="The Shardstorm loading screen with blue and yellow loading stripes; in its central box a small ship and shards, SC 0055 HI 0055 and SHARDSTORM"></a></div>
+      <div class="demo-text">
+        <p class="badges"><span class="badge m48K">48K</span><span class="badge m128K">128K</span><span class="date">20 November 2026</span></p>
+        <h3><a href="demos/shardstorm-release/">Shardstorm: the finished tapes</a></h3>
+        <p>The game itself, on the tapes every experiment here was leading to: a jingle, the loading screen developing, then a cut-down Shardstorm to play in its box while the game loads - with the tune and its sounds on a 128K. 48K and 128K, joysticks too.</p>
+        <p class="links"><a class="btn btn-small" href="demos/shardstorm-release/">How it works</a><a class="btn btn-small btn-ghost" href="files/shardstorm-128k.tzx" download>128K .tzx</a><a class="btn btn-small btn-ghost" href="files/shardstorm-128k.tap" download>128K .tap</a><a class="btn btn-small btn-ghost" href="files/shardstorm-128k-instant.tap" download>128K instant .tap</a><a class="btn btn-small btn-ghost" href="files/shardstorm-48k.tzx" download>48K .tzx</a><a class="btn btn-small btn-ghost" href="files/shardstorm-48k.tap" download>48K .tap</a><a class="btn btn-small btn-ghost" href="files/shardstorm-48k-instant.tap" download>48K instant .tap</a></p>
+      </div>
+    </article>
+    <article class="demo card">
+      <div class="demo-media"><video src="videos/shardstorm-reveal.mp4" poster="shots/shardstorm-reveal/developing.png" width="782" height="576" muted loop playsinline controls preload="metadata" aria-label="A loading screen that develops like a photo: Recorded in Retro Virtual Machine, 128K"></video></div>
       <div class="demo-text">
         <p class="badges"><span class="badge m48K">48K</span><span class="badge m128K">128K</span><span class="date">13 November 2026</span></p>
         <h3><a href="demos/shardstorm-reveal/">A loading screen that develops like a photo</a></h3>
@@ -135,7 +144,7 @@
       <p class="eyebrow">Loading them</p>
       <h2>Play the tape</h2>
       <p>The point of a custom loader is what happens while the tape plays, so let it play: at normal speed, the whole way through.</p>
-      <p class="meta">Tapes last built: 13 November 2026.</p>
+      <p class="meta">Tapes last built: 20 November 2026.</p>
     </div>
     <ol class="steps">
       <li><b>In an emulator</b> (ZX Spin, Retro Virtual Machine, Fuse and others): choose the machine the demo says - a 128K or +2 for the 128K ones - and open the <code>.tzx</code> or the <code>.tap</code>. They hold the same blocks; use whichever your emulator prefers. On a 128K, pick <b>Tape Loader</b>; on a 48K, type <code>LOAD ""</code>.</li>
@@ -150,6 +159,7 @@
   <h2>What's new</h2>
   <div class="log card">
     <ul>
+      <li><time datetime="2026-11-20">20 November 2026</time> <b>Shardstorm is finished:</b> <a href="demos/shardstorm-release/">the release tapes</a> - the jingle, the developing screen and the mini-game, now with the tune and sounds on a 128K and joysticks; and the game has a saucer, faster turning and exact hits.</li>
       <li><time datetime="2026-11-13">13 November 2026</time> <b>Louder:</b> <a href="demos/shardstorm-beeper/">the beeper tune while the 48K loads</a> is about 10 dB louder against the tape - in Retro Virtual Machine the first version could not be heard over it. New tape and new clips.</li>
       <li><time datetime="2026-11-13">13 November 2026</time> <b>Fixed:</b> since 12 November, Shardstorm froze a moment into its menu in Retro Virtual Machine, on the 48K and the 128K, after any of these tapes had loaded it. Every Shardstorm tape here is rebuilt with the fix.</li>
       <li><time datetime="2026-11-13">13 November 2026</time> <b>Pong in the border, and a marquee:</b> <a href="demos/border-lab/">Border Lab</a> has a second page (SPACE): Pong with its bats in the side borders and its ball crossing all four, and giant letters running round the frame.</li>

@@ -40,7 +40,7 @@
     <p class="lead">Instead of arriving in the Spectrum's usual thirds and stripes, the loading screen develops: a faint wash first, then all its colours, then the detail sharpening line by line. 48K and 128K, with the singing tape's jingle and the mini-game.</p>
     <p>A Spectrum screen normally loads in the order it sits in memory: the top third a pixel line at a time, each line skipping eight rows down, then the middle third, then the bottom, and only then the colours. Everyone who had one knows the look.</p>
 <p>This tape puts the screen's bytes on tape in an order of our choosing, and the loader puts each byte in its place as it arrives. The order chosen here makes the picture develop like a photo: a sparse dither over the whole screen, then every cell's colour (so the layout is there within four seconds), then the pixel lines in four passes, each sharpening the whole picture at once.</p>
-    <div class="actions"><a class="btn" href="../../files/shardstorm-128k-reveal.tzx" download>Download the 128K .tzx <small>38 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-128k-reveal.tap" download>Download the 128K .tap <small>38 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-reveal.tzx" download>Download the 48K .tzx <small>34 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-reveal.tap" download>Download the 48K .tap <small>34 KB</small></a></div>
+    <div class="actions"><a class="btn" href="../../files/shardstorm-128k-reveal.tzx" download>Download the 128K .tzx <small>42 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-128k-reveal.tap" download>Download the 128K .tap <small>42 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-reveal.tzx" download>Download the 48K .tzx <small>36 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-reveal.tap" download>Download the 48K .tap <small>36 KB</small></a></div>
   </div>
   <figure class="hero-shot">
     <video src="../../videos/shardstorm-reveal.mp4" poster="../../shots/shardstorm-reveal/developing.png" width="782" height="576" muted loop playsinline controls preload="metadata" aria-label="A loading screen that develops like a photo: Recorded in Retro Virtual Machine, 128K"></video>
@@ -64,7 +64,7 @@
     </div>
     <aside class="card numbers">
       <h3>The numbers</h3>
-      <dl><dt>Machines</dt><dd>48K; 128K, +2</dd><dt>Tape</dt><dd>ROM speed: 3 min 43 s (48K), 3 min 58 s (128K) to the end; the order's table costs 9.5 s of it</dd><dt>Colours in</dt><dd>about 4 s into the screen</dd><dt>Behind the tape</dt><dd>at most one byte</dd></dl>
+      <dl><dt>Machines</dt><dd>48K; 128K, +2</dd><dt>Tape</dt><dd>ROM speed: 3 min 51 s (48K), 4 min 19 s (128K, now with the tune) to the end; the order's table costs 9.5 s of it</dd><dt>Colours in</dt><dd>about 4 s into the screen</dd><dt>Behind the tape</dt><dd>at most one byte</dd></dl>
     </aside>
   </div>
 </section>
@@ -88,8 +88,8 @@
       <p class="eyebrow">Download</p>
       <h2>Load it yourself</h2>
       <p>For the 48K and the 128K. Each machine has its own tape; the <code>.tap</code> reveals the screen the same way, but cannot carry the jingle that the <code>.tzx</code> plays first.</p>
-      <p class="meta"><code>shardstorm-128k-reveal.tzx</code>, 38 KB, built 13 November 2026<br><code>shardstorm-128k-reveal.tap</code>, 38 KB, built 13 November 2026<br><code>shardstorm-48k-reveal.tzx</code>, 34 KB, built 13 November 2026<br><code>shardstorm-48k-reveal.tap</code>, 34 KB, built 13 November 2026</p>
-      <div class="actions"><a class="btn" href="../../files/shardstorm-128k-reveal.tzx" download>Download the 128K .tzx <small>38 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-128k-reveal.tap" download>Download the 128K .tap <small>38 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-reveal.tzx" download>Download the 48K .tzx <small>34 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-reveal.tap" download>Download the 48K .tap <small>34 KB</small></a></div>
+      <p class="meta"><code>shardstorm-128k-reveal.tzx</code>, 42 KB, built 20 November 2026<br><code>shardstorm-128k-reveal.tap</code>, 42 KB, built 20 November 2026<br><code>shardstorm-48k-reveal.tzx</code>, 36 KB, built 20 November 2026<br><code>shardstorm-48k-reveal.tap</code>, 36 KB, built 20 November 2026</p>
+      <div class="actions"><a class="btn" href="../../files/shardstorm-128k-reveal.tzx" download>Download the 128K .tzx <small>42 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-128k-reveal.tap" download>Download the 128K .tap <small>42 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-reveal.tzx" download>Download the 48K .tzx <small>36 KB</small></a><a class="btn btn-ghost" href="../../files/shardstorm-48k-reveal.tap" download>Download the 48K .tap <small>36 KB</small></a></div>
     </div>
     <ol class="steps">
       <li><b>In an emulator</b> (ZX Spin, Retro Virtual Machine, Fuse and others): choose the machine the demo says - a 128K or +2 for the 128K ones - and open the <code>.tzx</code> or the <code>.tap</code>. Use the <code>.tzx</code> where you can: the <code>.tap</code> reveals the screen the same way, but cannot carry the jingle that the <code>.tzx</code> plays first. On a 128K, pick <b>Tape Loader</b>; on a 48K, type <code>LOAD ""</code>.</li>
@@ -101,7 +101,7 @@
 
 <nav class="wrap pager" aria-label="Other demos">
   <a href="../shardstorm-sing/">&larr; A tape that sings</a>
-  <span></span>
+  <a href="../shardstorm-release/">Shardstorm: the finished tapes &rarr;</a>
 </nav>
 </main>
 
